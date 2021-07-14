@@ -21,7 +21,7 @@ export default function useFetch(url, initialData) {
           throw new Error(`Ошибка ответа: ${response.status} ${response.statusText}`);
         }
       } catch(error) {
-        setError(error.toString());
+        setError(error.message);
       } finally {
         setLoading(false);
       }

@@ -12,17 +12,18 @@ export default function Users() {
     setSelectedUser(user);
   };
 
+  if (error) {
+    return <Error text={error}/>
+  }
+
+  if (isLoading) {
+    return <div className="loader"></div>
+  }
+
   return (
-    <>
-      {error && <Error text={error}/>}
-      {isLoading ? (
-        <div className="loader"></div>
-      ) : (
-        <div className="users">
-          <List items={users} onSelect={onSelectUser}/>
-          {selectedUser && <Details info={selectedUser}/>}
-        </div>
-      )}
-    </>
+    <div className="users">
+      <List items={users} onSelect={onSelectUser}/>
+      {selectedUser && <Details info={selectedUser}/>}
+    </div>
   )
 }

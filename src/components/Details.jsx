@@ -13,20 +13,21 @@ export default function Details({info}) {
     return details;
   }
 
+  if (error) {
+    return <Error text={error}/>
+  }
+
+  if (isLoading) {
+    return <div className="loader"></div>
+  }
+
   return (
-    <>
-      {error && <Error text={error}/>}
-      {isLoading ? (
-        <div className="loader"></div>
-      ) : (
-        <div className="user-details">
-          <img src={user.avatar} alt={user.name}/>
-          <div className="item name">{user.name}</div>
-          <ul className="details-list">
-            {renderDetails(user.details)}
-          </ul>
-        </div>
-      )}
-    </>
+    <div className="user-details">
+      <img src={user.avatar} alt={user.name}/>
+      <div className="item name">{user.name}</div>
+      <ul className="details-list">
+        {renderDetails(user.details)}
+      </ul>
+    </div>
   )
 }
